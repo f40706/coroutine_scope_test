@@ -16,12 +16,20 @@ class MainView(
     override fun getRootView() = mBinding.root
 
     fun initView() {
-        mBinding.btnTest.tag = BtnTagEnum.Btn1.name
+        mBinding.btnBlockTest.tag = BtnTagEnum.BlockingBtn.name
+        mBinding.btnAsyncTest.tag = BtnTagEnum.AsyncBtn.name
+        mBinding.btnWithContextTest.tag = BtnTagEnum.WithContextBtn.name
     }
 
     fun initEvent(listener: (String) -> Unit) {
         this.mListener = listener
-        mBinding.btnTest.setOnClickListener { view ->
+        mBinding.btnBlockTest.setOnClickListener { view ->
+            mListener?.also { it(view.tag.toString()) }
+        }
+        mBinding.btnAsyncTest.setOnClickListener { view ->
+            mListener?.also { it(view.tag.toString()) }
+        }
+        mBinding.btnWithContextTest.setOnClickListener { view ->
             mListener?.also { it(view.tag.toString()) }
         }
     }

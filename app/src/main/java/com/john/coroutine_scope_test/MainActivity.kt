@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initEvent() {
         mMainView.initEvent {
-            mainBrain.processCallbackEvent(it)
+            mainBrain.processCallbackEvent(it) {
+
+            }
         }
     }
 }
